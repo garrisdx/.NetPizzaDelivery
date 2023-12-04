@@ -1,0 +1,16 @@
+﻿@page "/pizzaorder"
+@rendermode InteractiveServer
+
+<h3>PizzaDelivery</h3>
+
+<h2>Select Topping</h2>
+<Topping></Topping>
+
+<h2>Select Crust</h2>
+<Crust/>
+<p> Total Price: $@pizza.GetFinalPrice()</p>
+
+@code {
+    Pizza pizza = new Pizza();
+
+}
