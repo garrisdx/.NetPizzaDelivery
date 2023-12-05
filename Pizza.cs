@@ -1,4 +1,6 @@
-﻿namespace PizzaDelivery
+﻿using System.Reflection.Metadata;
+
+namespace PizzaDelivery
 {
     public class Pizza
     {
@@ -6,18 +8,28 @@
         public Crust Crust { get; set; }
         public double Tip { get; set; }
 
+        public double DeliveryFee{ get; }
+
         public Pizza()
         {
             PizzaToppings = new PizzaTop();
             Crust = new Crust();
             Tip = 0;
+            DeliveryFee = 2.00;
+        }
+
+        public double GetTipAmount()
+        {
+            double cost = PizzaToppings.ToppingPrice() + Crust.CrustPrice();
+            double tip = cost * Tip;
+            return tip;
         }
 
         public double GetFinalPrice()
         {
-            double cost = PizzaToppings.ToppingPrice() + Crust.CrustPrice();
-            double tip = cost * Tip;
-            return cost + tip;
+            return PizzaToppings.ToppingPrice() + Crust.CrustPrice() + Tip + DeliveryFee;
+
+
         }
     }
     public class PizzaTop()
