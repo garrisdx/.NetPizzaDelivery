@@ -4,16 +4,20 @@
     {
         public PizzaTop PizzaToppings { get; set; }
         public Crust Crust { get; set; }
+        public double Tip { get; set; }
 
         public Pizza()
         {
             PizzaToppings = new PizzaTop();
             Crust = new Crust();
+            Tip = 0;
         }
 
         public double GetFinalPrice()
         {
-            return PizzaToppings.ToppingPrice() + Crust.CrustPrice();
+            double cost = PizzaToppings.ToppingPrice() + Crust.CrustPrice();
+            double tip = cost * Tip;
+            return cost + tip;
         }
     }
     public class PizzaTop()

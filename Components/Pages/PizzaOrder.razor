@@ -4,13 +4,32 @@
 <h3>PizzaDelivery</h3>
 
 <h2>Select Topping</h2>
-<Topping></Topping>
+<Topping/>
 
 <h2>Select Crust</h2>
 <Crust/>
-<p> Total Price: $@pizza.GetFinalPrice()</p>
+
+<p>Would you like to leave a tip?</p>
+<select id="symbol" name="symbol" @bind="pizza.Tip">
+    <option></option>
+    <option value=.12>12%</option>
+    <option value=.15>15%</option>
+    <option value=.18>18%</option>
+</select>
+
+
+<button @onclick="TotalBill">Calculate Bill</button>
+<p role="status"> Total Price: $@total</p>
+
 
 @code {
     Pizza pizza = new Pizza();
+    double total;
 
+    public void TotalBill()
+    {
+        double total = pizza.GetFinalPrice();
+    }
+
+    
 }
